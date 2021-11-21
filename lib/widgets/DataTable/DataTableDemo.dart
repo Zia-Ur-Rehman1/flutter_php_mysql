@@ -142,18 +142,14 @@ class DataTableDemoState extends State<DataTableDemo> {
                 tooltip: "This is the employee id"),
             DataColumn(
                 label: Text(
-                  "Name",
+                  "FIRST",
                 ),
                 numeric: false,
-                tooltip: "This is the full name"),
+                tooltip: "This is the last name"),
             DataColumn(
-                label: Text("Phone"),
+                label: Text("LAST"),
                 numeric: false,
-                tooltip: "This is phone no"),
-            DataColumn(
-                label: Text("Address"),
-                numeric: false,
-                tooltip: "This is the address"),
+                tooltip: "This is the last name"),
             DataColumn(
                 label: Text("DELETE"),
                 numeric: false,
@@ -186,7 +182,7 @@ class DataTableDemoState extends State<DataTableDemo> {
                         employee.getemail.toUpperCase(),
                       ),
                       onTap: () {
-                        print("Tapped " + employee.getname);
+                        print("Tapped " + employee.getemail);
                         _setValues(employee);
                         _selectedEmployee = employee;
                       },
@@ -199,7 +195,7 @@ class DataTableDemoState extends State<DataTableDemo> {
                         },
                       ),
                       onTap: () {
-                        print("Tapped " + employee.getname);
+                        print("Tapped " + employee.getemail);
                       },
                     ),
                   ],

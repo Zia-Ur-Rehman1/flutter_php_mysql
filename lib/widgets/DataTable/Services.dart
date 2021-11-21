@@ -37,7 +37,9 @@ class Services {
       map["action"] = _GET_ALL_ACTION;
       final response = await http.post(Uri.parse(ROOT), body: map);
       print("getEmployees >> Response:: ${response.body}");
+      var notes;
       if (response.statusCode == 200) {
+        
         List<Employee> list = parsePhotos(response.body);
         return list;
       } else {
@@ -51,6 +53,7 @@ class Services {
   static List<Employee> parsePhotos(String responseBody) {
     final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
     return parsed.map<Employee>((json) => Employee.fromJson(json)).toList();
+    ;
   }
 
   // Method to add employee to the database...
@@ -77,7 +80,7 @@ class Services {
 
   // Method to update an Employee in Database...
   static Future<String> updateEmployee(
-      int? empId, String name, String email) async {
+      String? empId, String name, String email) async {
     try {
       var map = Map<String, dynamic>();
       map['action'] = _UPDATE_EMP_ACTION;
@@ -97,7 +100,7 @@ class Services {
   }
 
   // Method to Delete an Employee from Database...
-  static Future<String> deleteEmployee(int? empId) async {
+  static Future<String> deleteEmployee(String? empId) async {
     try {
       var map = Map<String, dynamic>();
       map['action'] = _DELETE_EMP_ACTION;
