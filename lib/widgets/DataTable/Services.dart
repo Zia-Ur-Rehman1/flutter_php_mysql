@@ -1,6 +1,9 @@
+// ignore: file_names
 import 'dart:convert';
-import 'package:http/http.dart'as http; // add the http plugin in pubspec.yaml file.
+import 'package:http/http.dart'
+    as http; // add the http plugin in pubspec.yaml file.
 import 'Employee.dart';
+// @dart=2.9;
 
 class Services {
   static const ROOT = 'http://10.0.2.2/EmployeesDB/employee_actions.php';
@@ -30,28 +33,29 @@ class Services {
 
   static Future<List<Employee>> getEmployees() async {
     try {
-      var map = Map<String, dynamic>();
-      map['action'] = _GET_ALL_ACTION;
+      var map = new Map<String, dynamic>();
+      map["action"] = _GET_ALL_ACTION;
       final response = await http.post(Uri.parse(ROOT), body: map);
-      print('getEmployees Response: ${response.body}');
-      if (200 == response.statusCode) {
-        List<Employee> list = parseResponse(response.body);
+      print("getEmployees >> Response:: ${response.body}");
+      if (response.statusCode == 200) {
+        List<Employee> list = parsePhotos(response.body);
         return list;
       } else {
-        return [];
+        throw [];
       }
     } catch (e) {
-      return []; // return an empty list on exception/error
+      return [];
     }
   }
 
-  static List<Employee> parseResponse(String responseBody) {
+  static List<Employee> parsePhotos(String responseBody) {
     final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
     return parsed.map<Employee>((json) => Employee.fromJson(json)).toList();
   }
 
   // Method to add employee to the database...
-  static Future<String> addEmployee(String name, String email,String phone, String address) async {
+  static Future<String> addEmployee(
+      String name, String email, String phone, String address) async {
     try {
       var map = Map<String, dynamic>();
       map['action'] = _ADD_EMP_ACTION;
@@ -73,7 +77,7 @@ class Services {
 
   // Method to update an Employee in Database...
   static Future<String> updateEmployee(
-      String empId, String name, String email) async {
+      int? empId, String name, String email) async {
     try {
       var map = Map<String, dynamic>();
       map['action'] = _UPDATE_EMP_ACTION;
@@ -93,7 +97,7 @@ class Services {
   }
 
   // Method to Delete an Employee from Database...
-  static Future<String> deleteEmployee(String empId) async {
+  static Future<String> deleteEmployee(int? empId) async {
     try {
       var map = Map<String, dynamic>();
       map['action'] = _DELETE_EMP_ACTION;

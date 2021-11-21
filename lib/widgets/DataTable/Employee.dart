@@ -25,6 +25,11 @@ class Employee {
     );
   }
 
+  get getname => this.name;
+  get getemail => this.email;
+  get getphone => this.phone;
+  get getaddress => this.address;
+
   @override
   String toString() {
     return 'Employee(id: $id, name: $name, email: $email, phone: $phone, address: $address)';
