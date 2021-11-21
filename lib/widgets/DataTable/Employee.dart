@@ -2,11 +2,11 @@
 import 'package:flutter/cupertino.dart';
 
 class Employee {
-  int? id;
-  String? name;
-  String? email;
-  String? phone;
-  String? address;
+  int id;
+  String name;
+  String email;
+  String phone;
+  String address;
   Employee({
     this.id,
     this.name,

@@ -12,15 +12,15 @@ class DataTableDemo extends StatefulWidget {
 }
 
 class DataTableDemoState extends State<DataTableDemo> {
-  late List<Employee> _employees;
-  late GlobalKey<ScaffoldState> _scaffoldKey;
-  late TextEditingController _nameController;
-  late TextEditingController _emailController;
-  late TextEditingController _phoneController;
-  late TextEditingController _addressController;
-  late Employee _selectedEmployee;
-  late bool _isUpdating;
-  late String _titleProgress;
+  List<Employee> _employees;
+  GlobalKey<ScaffoldState> _scaffoldKey;
+  TextEditingController _nameController;
+  TextEditingController _emailController;
+  TextEditingController _phoneController;
+  TextEditingController _addressController;
+  Employee _selectedEmployee;
+  bool _isUpdating;
+  String _titleProgress;
 
   @override
   void initState() {
@@ -208,7 +208,7 @@ class DataTableDemoState extends State<DataTableDemo> {
   }
 
   showSnackBar(context, message) {
-    _scaffoldKey.currentState!.showSnackBar(SnackBar(
+    _scaffoldKey.currentState.showSnackBar(SnackBar(
       content: Text(message),
     ));
   }
