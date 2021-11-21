@@ -2,7 +2,7 @@
 import 'package:flutter/cupertino.dart';
 
 class Employee {
-  int id;
+  String id;
   String name;
   String email;
   String phone;
@@ -17,7 +17,7 @@ class Employee {
   
   factory Employee.fromJson(Map<String, dynamic> json) {
     return Employee(
-      id: int.parse(json['id']),
+      id: json['id'] as String,
       name: json['name'] as String,
       email: json['email'] as String,
       phone: json['phone'] as String,

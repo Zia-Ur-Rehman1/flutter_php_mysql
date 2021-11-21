@@ -7,7 +7,7 @@ void main() {
 }
 
 class HomeApp extends StatelessWidget {
-  const HomeApp({Key? key}) : super(key: key);
+  const HomeApp({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

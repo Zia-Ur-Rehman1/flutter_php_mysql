@@ -79,11 +79,11 @@ class Services {
 
   // Method to update an Employee in Database...
   static Future<String> updateEmployee(
-      int empId, String name, String email) async {
+      String empId, String name, String email) async {
     try {
       var map = Map<String, dynamic>();
       map['action'] = _UPDATE_EMP_ACTION;
-      map['id'] = empId;
+      map['id'] = (empId);
       map['name'] = name;
       map['email'] = email;
       final response = await http.post(Uri.parse(ROOT), body: map);
@@ -99,7 +99,7 @@ class Services {
   }
 
   // Method to Delete an Employee from Database...
-  static Future<String> deleteEmployee(int empId) async {
+  static Future<String> deleteEmployee(String empId) async {
     try {
       var map = Map<String, dynamic>();
       map['action'] = _DELETE_EMP_ACTION;

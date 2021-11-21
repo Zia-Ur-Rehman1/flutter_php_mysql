@@ -160,7 +160,7 @@ class DataTableDemoState extends State<DataTableDemo> {
                 (employee) => DataRow(
                   cells: [
                     DataCell(
-                      Text(employee.id.toString()),
+                      Text(employee.id),
                       onTap: () {
                         print("Tapped " + employee.getname);
                         _setValues(employee);
@@ -281,6 +281,7 @@ class DataTableDemoState extends State<DataTableDemo> {
                         child: Text('UPDATE'),
                         onPressed: () {
                           _updateEmployee(_selectedEmployee);
+                          
                         },
                       ),
                       OutlineButton(
