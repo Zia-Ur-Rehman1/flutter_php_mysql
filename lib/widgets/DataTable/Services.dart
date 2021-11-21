@@ -39,7 +39,6 @@ class Services {
       print("getEmployees >> Response:: ${response.body}");
       var notes;
       if (response.statusCode == 200) {
-        
         List<Employee> list = parsePhotos(response.body);
         return list;
       } else {
@@ -80,7 +79,7 @@ class Services {
 
   // Method to update an Employee in Database...
   static Future<String> updateEmployee(
-      String? empId, String name, String email) async {
+      int? empId, String name, String email) async {
     try {
       var map = Map<String, dynamic>();
       map['action'] = _UPDATE_EMP_ACTION;
@@ -100,7 +99,7 @@ class Services {
   }
 
   // Method to Delete an Employee from Database...
-  static Future<String> deleteEmployee(String? empId) async {
+  static Future<String> deleteEmployee(int? empId) async {
     try {
       var map = Map<String, dynamic>();
       map['action'] = _DELETE_EMP_ACTION;
